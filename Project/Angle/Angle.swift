@@ -71,3 +71,31 @@ public func *(lhs: Angle, rhs: Double) -> Angle {
 public func *(lhs: Double, rhs: Angle) -> Angle {
 	return Angle(lhs * rhs._value)
 }
+
+public func +=(inout lhs: Angle, rhs: Angle) {
+	lhs = lhs + rhs
+}
+
+public func +=(inout lhs: Angle, rhs: Double) {
+	lhs = lhs + rhs
+}
+
+public func -=(inout lhs: Angle, rhs: Angle) {
+	lhs = lhs - rhs
+}
+
+public func -=(inout lhs: Angle, rhs: Double) {
+	lhs = lhs - rhs
+}
+
+public func sin(angle: Angle) -> Double {
+	return sin(angle._value)
+}
+
+public func cos(angle: Angle) -> Double {
+	return cos(angle._value)
+}
+
+public func tan(angle: Angle) -> Double {
+	return tan(angle._value)
+}
