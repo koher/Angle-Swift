@@ -1,8 +1,8 @@
 import Darwin
 
-private let M_2_PI = M_PI * 2
+private let M_2_PI: Double = M_PI * 2
 
-public struct Angle : Equatable, Hashable, Printable, FloatLiteralConvertible {
+public struct Angle : Equatable, Hashable, Printable, FloatLiteralConvertible, IntegerLiteralConvertible {
 	private var _value: Double
 	
 	public init(_ value: Double) {
@@ -11,6 +11,10 @@ public struct Angle : Equatable, Hashable, Printable, FloatLiteralConvertible {
 	
 	public init(floatLiteral: FloatLiteralType) {
 		self.init(floatLiteral)
+	}
+	
+	public init(integerLiteral: IntegerLiteralType) {
+		self.init(Double(integerLiteral))
 	}
 	
 	public var hashValue: Int {
