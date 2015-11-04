@@ -2,7 +2,7 @@ import Darwin
 
 private let M_2_PI: Double = M_PI * 2
 
-public struct Angle : Equatable, Hashable, Printable, FloatLiteralConvertible, IntegerLiteralConvertible {
+public struct Angle : Equatable, Hashable, CustomStringConvertible, FloatLiteralConvertible, IntegerLiteralConvertible {
 	private var _value: Double
 	
 	public init(_ value: Double) {
