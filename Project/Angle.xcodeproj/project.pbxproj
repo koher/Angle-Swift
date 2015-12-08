@@ -211,6 +211,8 @@
 		D6A3765A1A57C0B500EECD80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = koherent.org;
 				TargetAttributes = {
@@ -488,6 +490,7 @@
 				D6A3767B1A57C0B600EECD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6A3767C1A57C0B600EECD80 /* Build configuration list for PBXNativeTarget "AngleTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +499,7 @@
 				D6A3767E1A57C0B600EECD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6A376891A57D6E900EECD80 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +508,7 @@
 				D6A3768B1A57D6E900EECD80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
