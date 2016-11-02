@@ -11,7 +11,6 @@
 		D6A3766F1A57C0B600EECD80 /* Angle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A376631A57C0B500EECD80 /* Angle.framework */; };
 		D6A376761A57C0B600EECD80 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A376751A57C0B600EECD80 /* AngleTests.swift */; };
 		D6A376801A57C0C200EECD80 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A3767F1A57C0C200EECD80 /* Angle.swift */; };
-		D6A376881A57D6E900EECD80 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A376871A57D6E900EECD80 /* main.swift */; };
 		D6A3768F1A57D75100EECD80 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A3767F1A57C0C200EECD80 /* Angle.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		D6A376751A57C0B600EECD80 /* AngleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		D6A3767F1A57C0C200EECD80 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		D6A376851A57D6E900EECD80 /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6A376871A57D6E900EECD80 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +78,6 @@
 			children = (
 				D6A376651A57C0B500EECD80 /* Angle */,
 				D6A376721A57C0B600EECD80 /* AngleTests */,
-				D6A376861A57D6E900EECD80 /* Demo */,
 				D6A376641A57C0B500EECD80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,14 +125,6 @@
 				D6A376741A57C0B600EECD80 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D6A376861A57D6E900EECD80 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				D6A376871A57D6E900EECD80 /* main.swift */,
-			);
-			path = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A376881A57D6E900EECD80 /* main.swift in Sources */,
 				D6A3768F1A57D75100EECD80 /* Angle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +383,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Angle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

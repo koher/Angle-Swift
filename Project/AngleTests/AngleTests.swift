@@ -1,5 +1,5 @@
 import XCTest
-import Angle
+@testable import Angle
 
 class AngleTests: XCTestCase {
     private let epsilon = 1.0e-10
@@ -96,4 +96,21 @@ class AngleTests: XCTestCase {
 		
 		XCTAssertEqual(Double(12.0 - M_PI * 2), (Angle(3.0) * 4.0).value)
 	}
+    
+    func testSample() {
+        let angle1: Angle = M_PI * 2 + 1.0
+        print(angle1) // 1.0
+        
+        let angle2: Angle = 1.0
+        /**/ _ =
+        angle1 == angle2 // true
+        
+        let angle3 = angle1 + 2.0 // 3.0
+        
+        let signed: Double = Angle(M_PI * 2 - 1.0).signed // -1.0: normalized into [-M_PI, M_PI)
+        
+        /**/ XCTAssertEqualWithAccuracy(angle2.value, 1.0, accuracy: epsilon)
+        /**/ XCTAssertEqualWithAccuracy(angle3.value, 3.0, accuracy: epsilon)
+        /**/ XCTAssertEqualWithAccuracy(signed, -1.0, accuracy: epsilon)
+    }
 }
