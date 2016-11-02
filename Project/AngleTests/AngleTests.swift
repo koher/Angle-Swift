@@ -2,6 +2,8 @@ import XCTest
 import Angle
 
 class AngleTests: XCTestCase {
+    private let epsilon = 1.0e-10
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,7 +24,7 @@ class AngleTests: XCTestCase {
 		XCTAssertEqual(Double(0.0), Angle.normalize(M_PI * 2))
 		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle.normalize(M_PI * 2 - 1.0e-10))
 		
-		XCTAssertEqual(Double(100.0 % (M_PI * 2)), Angle.normalize(100.0))
+        XCTAssertEqualWithAccuracy(Double(100.0.truncatingRemainder(dividingBy: (M_PI * 2))), Angle.normalize(100.0), accuracy: epsilon)
 	}
     
     func testLiteral() {
@@ -41,7 +43,7 @@ class AngleTests: XCTestCase {
 		XCTAssertEqual(Double(0.0), Angle(M_PI * 2).value)
 		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle(M_PI * 2 - 1.0e-10).value)
 		
-		XCTAssertEqual(Double(100.0 % (M_PI * 2)), Angle(100.0).value)
+		XCTAssertEqualWithAccuracy(Double(100.0.truncatingRemainder(dividingBy: (M_PI * 2))), Angle(100.0).value, accuracy: epsilon)
 	}
 	
 	func testSigned() {

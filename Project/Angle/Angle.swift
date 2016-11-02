@@ -2,8 +2,8 @@ import Darwin
 
 private let M_2_PI: Double = M_PI * 2
 
-public struct Angle : Equatable, Hashable, CustomStringConvertible, FloatLiteralConvertible, IntegerLiteralConvertible {
-	private var _value: Double
+public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+	fileprivate var _value: Double
 	
 	public init(_ value: Double) {
 		_value = value
@@ -39,8 +39,8 @@ public struct Angle : Equatable, Hashable, CustomStringConvertible, FloatLiteral
 		return Angle.normalize(_value + M_PI) - M_PI
 	}
 
-	public static func normalize(value: Double) -> Double {
-		return value < 0.0 ? (value % M_2_PI) + M_2_PI : value % M_2_PI
+	public static func normalize(_ value: Double) -> Double {
+		return value < 0.0 ? (value.truncatingRemainder(dividingBy: M_2_PI)) + M_2_PI : value.truncatingRemainder(dividingBy: M_2_PI)
 	}
 }
 
@@ -76,30 +76,30 @@ public func *(lhs: Double, rhs: Angle) -> Angle {
 	return Angle(lhs * rhs._value)
 }
 
-public func +=(inout lhs: Angle, rhs: Angle) {
+public func +=(lhs: inout Angle, rhs: Angle) {
 	lhs = lhs + rhs
 }
 
-public func +=(inout lhs: Angle, rhs: Double) {
+public func +=(lhs: inout Angle, rhs: Double) {
 	lhs = lhs + rhs
 }
 
-public func -=(inout lhs: Angle, rhs: Angle) {
+public func -=(lhs: inout Angle, rhs: Angle) {
 	lhs = lhs - rhs
 }
 
-public func -=(inout lhs: Angle, rhs: Double) {
+public func -=(lhs: inout Angle, rhs: Double) {
 	lhs = lhs - rhs
 }
 
-public func sin(angle: Angle) -> Double {
+public func sin(_ angle: Angle) -> Double {
 	return sin(angle._value)
 }
 
-public func cos(angle: Angle) -> Double {
+public func cos(_ angle: Angle) -> Double {
 	return cos(angle._value)
 }
 
-public func tan(angle: Angle) -> Double {
+public func tan(_ angle: Angle) -> Double {
 	return tan(angle._value)
 }
