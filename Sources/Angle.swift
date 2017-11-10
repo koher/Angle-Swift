@@ -2,23 +2,11 @@ import Darwin
 
 private let pi2: Double = Double.pi * 2
 
-public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public struct Angle {
 	fileprivate var _value: Double
 	
 	public init(_ value: Double) {
 		_value = value
-	}
-	
-	public init(floatLiteral: FloatLiteralType) {
-		self.init(floatLiteral)
-	}
-	
-	public init(integerLiteral: IntegerLiteralType) {
-		self.init(Double(integerLiteral))
-	}
-	
-	public var hashValue: Int {
-		return value.hashValue
 	}
 	
 	public var value: Double {
@@ -28,10 +16,6 @@ public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleB
 		set {
 			_value = newValue
 		}
-	}
-	
-	public var description: String {
-		return value.description
 	}
 	
 	// -.pi <= signed < .pi
@@ -44,8 +28,40 @@ public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleB
 	}
 }
 
-public func ==(lhs: Angle, rhs: Angle) -> Bool {
-	return lhs.value == rhs.value
+extension Angle : Equatable {
+    public static func ==(lhs: Angle, rhs: Angle) -> Bool {
+        return lhs.value == rhs.value
+    }
+}
+
+extension Angle : Hashable {
+    public var hashValue: Int {
+        return value.hashValue
+    }
+}
+
+extension Angle : CustomStringConvertible {
+    public var description: String {
+        return value.description
+    }
+}
+
+extension Angle : CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return "Angle(\(description)"
+    }
+}
+
+extension Angle : ExpressibleByIntegerLiteral {
+    public init(integerLiteral: IntegerLiteralType) {
+        self.init(Double(integerLiteral))
+    }
+}
+
+extension Angle : ExpressibleByFloatLiteral {
+    public init(floatLiteral: FloatLiteralType) {
+        self.init(floatLiteral)
+    }
 }
 
 public func +(lhs: Angle, rhs: Angle) -> Angle {
