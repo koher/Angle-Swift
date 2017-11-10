@@ -16,15 +16,15 @@ class AngleTests: XCTestCase {
 	
 	func testNormalize() {
 		XCTAssertEqual(Double(1.0), Angle.normalize(1.0))
-		XCTAssertEqual(Double(5.0), Angle.normalize(5.0 - M_PI * 2))
-		XCTAssertEqual(Double(M_PI * 2 - 1.0), Angle.normalize(-1.0))
+		XCTAssertEqual(Double(5.0), Angle.normalize(5.0 - .pi * 2))
+		XCTAssertEqual(Double(.pi * 2 - 1.0), Angle.normalize(-1.0))
 		
 		XCTAssertEqual(Double(0.0), Angle.normalize(0.0))
-		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle.normalize(-1.0e-10))
-		XCTAssertEqual(Double(0.0), Angle.normalize(M_PI * 2))
-		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle.normalize(M_PI * 2 - 1.0e-10))
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalize(-1.0e-10))
+		XCTAssertEqual(Double(0.0), Angle.normalize(.pi * 2))
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalize(.pi * 2 - 1.0e-10))
 		
-        XCTAssertEqualWithAccuracy(Double(100.0.truncatingRemainder(dividingBy: (M_PI * 2))), Angle.normalize(100.0), accuracy: epsilon)
+        XCTAssertEqual(Double(100.0.truncatingRemainder(dividingBy: (.pi * 2))), Angle.normalize(100.0), accuracy: epsilon)
 	}
     
     func testLiteral() {
@@ -35,28 +35,28 @@ class AngleTests: XCTestCase {
 	
 	func testValue() {
 		XCTAssertEqual(Double(1.0), Angle(1.0).value)
-		XCTAssertEqual(Double(5.0), Angle(5.0 - M_PI * 2).value)
-		XCTAssertEqual(Double(M_PI * 2 - 1.0), Angle(-1.0).value)
+		XCTAssertEqual(Double(5.0), Angle(5.0 - .pi * 2).value)
+		XCTAssertEqual(Double(.pi * 2 - 1.0), Angle(-1.0).value)
 		
 		XCTAssertEqual(Double(0.0), Angle(0.0).value)
-		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle(-1.0e-10).value)
-		XCTAssertEqual(Double(0.0), Angle(M_PI * 2).value)
-		XCTAssertEqual(Double(M_PI * 2 - 1.0e-10), Angle(M_PI * 2 - 1.0e-10).value)
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle(-1.0e-10).value)
+		XCTAssertEqual(Double(0.0), Angle(.pi * 2).value)
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle(.pi * 2 - 1.0e-10).value)
 		
-		XCTAssertEqualWithAccuracy(Double(100.0.truncatingRemainder(dividingBy: (M_PI * 2))), Angle(100.0).value, accuracy: epsilon)
+		XCTAssertEqual(Double(100.0.truncatingRemainder(dividingBy: (.pi * 2))), Angle(100.0).value, accuracy: epsilon)
 	}
 	
 	func testSigned() {
 		XCTAssertEqual(Double(1.0), Angle(1.0).signed)
 		XCTAssertEqual(Double(-1.0), Angle(-1.0).signed)
-		XCTAssertEqual(Double(-1.0), Angle(M_PI * 2 - 1.0).signed)
-		XCTAssertEqual(Double(-M_PI), Angle(M_PI).signed)
+		XCTAssertEqual(Double(-1.0), Angle(.pi * 2 - 1.0).signed)
+		XCTAssertEqual(-Double.pi, Angle(.pi).signed)
 	}
 	
 	func testEqual() {
 		XCTAssertTrue(Angle(1.0) == Angle(1.0))
-		XCTAssertTrue(Angle(M_PI * 2 + 1.0) == Angle(1.0))
-		XCTAssertTrue(Angle(-1.0) == Angle(M_PI * 2 - 1.0))
+		XCTAssertTrue(Angle(.pi * 2 + 1.0) == Angle(1.0))
+		XCTAssertTrue(Angle(-1.0) == Angle(.pi * 2 - 1.0))
 		XCTAssertFalse(Angle(1.0) == Angle(2.0))
 		
 		XCTAssertFalse(Angle(1.0) != Angle(1.0))
@@ -65,14 +65,14 @@ class AngleTests: XCTestCase {
 	
 	func testHashValue() {
 		XCTAssertEqual(Angle(1.0).hashValue, Angle(1.0).hashValue)
-		XCTAssertEqual(Angle(M_PI * 2 + 1.0).hashValue, Angle(1.0).hashValue)
+		XCTAssertEqual(Angle(.pi * 2 + 1.0).hashValue, Angle(1.0).hashValue)
 		
 		XCTAssertNotEqual(Angle(1.0).hashValue, Angle(2.0).hashValue) // Although hash values of different values can be equal, it's natual to think that it's caused by some bugs when this test fails.
 	}
 	
 	func testDescription() {
 		XCTAssertEqual(Double(1.0).description, Angle(1.0).description)
-		XCTAssertEqual(Double(M_PI * 2 - 1.0).description, Angle(-1.0).description)
+		XCTAssertEqual(Double(.pi * 2 - 1.0).description, Angle(-1.0).description)
 	}
 	
 	func testAdd() {
@@ -80,25 +80,25 @@ class AngleTests: XCTestCase {
 		XCTAssertEqual(Double(5.0), (Angle(2.0) + 3.0).value)
 		XCTAssertEqual(Double(5.0), (2.0 + Angle(3.0)).value)
 		
-		XCTAssertEqual(Double(8.0 - M_PI * 2), (Angle(3.0) + Angle(5.0)).value)
+		XCTAssertEqual(Double(8.0 - .pi * 2), (Angle(3.0) + Angle(5.0)).value)
 	}
 	
 	func testSubtract() {
 		XCTAssertEqual(Double(2.0), (Angle(5.0) - Angle(3.0)).value)
 		XCTAssertEqual(Double(2.0), (Angle(5.0) - 3.0).value)
 		
-		XCTAssertEqual(Double(M_PI * 2 - 1.0), (Angle(2.0) - Angle(3.0)).value)
+		XCTAssertEqual(Double(.pi * 2 - 1.0), (Angle(2.0) - Angle(3.0)).value)
 	}
 	
 	func testMultiply() {
 		XCTAssertEqual(Double(6.0), (Angle(2.0) * 3.0).value)
 		XCTAssertEqual(Double(6.0), (2.0 * Angle(3.0)).value)
 		
-		XCTAssertEqual(Double(12.0 - M_PI * 2), (Angle(3.0) * 4.0).value)
+		XCTAssertEqual(Double(12.0 - .pi * 2), (Angle(3.0) * 4.0).value)
 	}
     
     func testSample() {
-        let angle1: Angle = M_PI * 2 + 1.0
+        let angle1: Angle = .pi * 2 + 1.0
         print(angle1) // 1.0
         
         let angle2: Angle = 1.0
@@ -107,10 +107,10 @@ class AngleTests: XCTestCase {
         
         let angle3 = angle1 + 2.0 // 3.0
         
-        let signed: Double = Angle(M_PI * 2 - 1.0).signed // -1.0: normalized into [-M_PI, M_PI)
+        let signed: Double = Angle(.pi * 2 - 1.0).signed // -1.0: normalized into [-.pi, .pi)
         
-        /**/ XCTAssertEqualWithAccuracy(angle2.value, 1.0, accuracy: epsilon)
-        /**/ XCTAssertEqualWithAccuracy(angle3.value, 3.0, accuracy: epsilon)
-        /**/ XCTAssertEqualWithAccuracy(signed, -1.0, accuracy: epsilon)
+        /**/ XCTAssertEqual(angle2.value, 1.0, accuracy: epsilon)
+        /**/ XCTAssertEqual(angle3.value, 3.0, accuracy: epsilon)
+        /**/ XCTAssertEqual(signed, -1.0, accuracy: epsilon)
     }
 }
