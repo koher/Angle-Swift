@@ -11,7 +11,7 @@ public struct Angle {
 	
 	public var value: Double {
 		get {
-			return Angle.normalize(_value)
+			return Angle.normalized(_value)
 		}
 		set {
 			_value = newValue
@@ -20,11 +20,13 @@ public struct Angle {
 	
 	// -.pi <= signed < .pi
 	public var signed: Double {
-		return Angle.normalize(_value + Double.pi) - Double.pi
+		return Angle.normalized(_value + Double.pi) - Double.pi
 	}
 
-	public static func normalize(_ value: Double) -> Double {
-		return value < 0.0 ? (value.truncatingRemainder(dividingBy: pi2)) + pi2 : value.truncatingRemainder(dividingBy: pi2)
+	public static func normalized(_ value: Double) -> Double {
+		return value < 0.0
+            ? (value.truncatingRemainder(dividingBy: pi2)) + pi2
+            : value.truncatingRemainder(dividingBy: pi2)
 	}
 }
 

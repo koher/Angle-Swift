@@ -15,16 +15,16 @@ class AngleTests: XCTestCase {
     }
 	
 	func testNormalize() {
-		XCTAssertEqual(Double(1.0), Angle.normalize(1.0))
-		XCTAssertEqual(Double(5.0), Angle.normalize(5.0 - .pi * 2))
-		XCTAssertEqual(Double(.pi * 2 - 1.0), Angle.normalize(-1.0))
+		XCTAssertEqual(Double(1.0), Angle.normalized(1.0))
+		XCTAssertEqual(Double(5.0), Angle.normalized(5.0 - .pi * 2))
+		XCTAssertEqual(Double(.pi * 2 - 1.0), Angle.normalized(-1.0))
 		
-		XCTAssertEqual(Double(0.0), Angle.normalize(0.0))
-		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalize(-1.0e-10))
-		XCTAssertEqual(Double(0.0), Angle.normalize(.pi * 2))
-		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalize(.pi * 2 - 1.0e-10))
+		XCTAssertEqual(Double(0.0), Angle.normalized(0.0))
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalized(-1.0e-10))
+		XCTAssertEqual(Double(0.0), Angle.normalized(.pi * 2))
+		XCTAssertEqual(Double(.pi * 2 - 1.0e-10), Angle.normalized(.pi * 2 - 1.0e-10))
 		
-        XCTAssertEqual(Double(100.0.truncatingRemainder(dividingBy: (.pi * 2))), Angle.normalize(100.0), accuracy: epsilon)
+        XCTAssertEqual(Double(100.0.truncatingRemainder(dividingBy: (.pi * 2))), Angle.normalized(100.0), accuracy: epsilon)
 	}
     
     func testLiteral() {
