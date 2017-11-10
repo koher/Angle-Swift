@@ -1,10 +1,8 @@
-Angle-Swift
-============
+# Angle-Swift
 
 Angle is a value type which represents angles normalized into \[0, 2 * M_PI).
 
-Usage
-------------
+## Usage
 
 ```swift
 let angle1: Angle = .pi * 2 + 1.0
@@ -18,7 +16,6 @@ let angle3 = angle1 + 2.0 // 3.0
 let signed: Double = Angle(.pi * 2 - 1.0).signed // -1.0: normalized into [-.pi, .pi)
 ```
 
-License
-------------
+## License
 
 [The MIT License](LICENSE)
