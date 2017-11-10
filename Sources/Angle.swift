@@ -1,6 +1,6 @@
 import Darwin
 
-private let M_2_PI: Double = Double.pi * 2
+private let pi2: Double = Double.pi * 2
 
 public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 	fileprivate var _value: Double
@@ -34,13 +34,13 @@ public struct Angle : Equatable, Hashable, CustomStringConvertible, ExpressibleB
 		return value.description
 	}
 	
-	// -PI <= signed < PI
+	// -.pi <= signed < .pi
 	public var signed: Double {
 		return Angle.normalize(_value + Double.pi) - Double.pi
 	}
 
 	public static func normalize(_ value: Double) -> Double {
-		return value < 0.0 ? (value.truncatingRemainder(dividingBy: M_2_PI)) + M_2_PI : value.truncatingRemainder(dividingBy: M_2_PI)
+		return value < 0.0 ? (value.truncatingRemainder(dividingBy: pi2)) + pi2 : value.truncatingRemainder(dividingBy: pi2)
 	}
 }
 
