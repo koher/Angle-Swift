@@ -1,10 +1,12 @@
-# Angle-Swift
+# Angle
 
-Angle is a value type which represents angles normalized into \[0, 2 * M_PI).
+`Angle` is a type which represents angles normalized into \[0, 2 * .pi).
 
 ## Usage
 
 ```swift
+import Angle
+
 let angle1: Angle = .pi * 2 + 1.0
 print(angle1) // 1.0
 
