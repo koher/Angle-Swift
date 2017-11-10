@@ -1,3 +1,11 @@
+//
+//  Angle.h
+//  Angle
+//
+//  Created by Yuta Koshizawa on 2017/11/10.
+//  Copyright © 2017 koherent.org. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 
 //! Project version number for Angle.
